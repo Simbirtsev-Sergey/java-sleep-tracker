@@ -11,13 +11,15 @@ public class SleeplessNightsCounter implements Function<List<SleepSession>, Slee
     @Override
     public SleepAnalysisResult apply(final List<SleepSession> sleepingSessions) {
 
+        if (sleepingSessions.isEmpty()) {
+            return new SleepAnalysisResult("Количество бессонных ночей", 0);
+        }
         long countNights = countNight(sleepingSessions);
 
         long countSleeplessNights = sleepingSessions
                 .stream()
                 .filter(session -> !session.getBeginSleepSession().toLocalDate()
                         .equals(session.getEndSleep().toLocalDate()) ||
-                        session.getBeginSleepSession().toLocalTime().isAfter(LocalTime.of(0, 0)) &&
                         session.getBeginSleepSession().toLocalTime().isBefore(LocalTime.of(6, 0)))
                 .count();
 
