@@ -2,8 +2,8 @@ package analyticFunctions;
 
 import enums.TypeUser;
 import ru.yandex.practicum.sleeptracker.SleepSession;
-import ru.yandex.practicum.sleeptracker.SleepSessions;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.function.Function;
@@ -11,21 +11,22 @@ import java.util.function.Function;
 public class DetermineTypeUser implements Function<List<SleepSession>, SleepAnalysisResult> {
     @Override
     public SleepAnalysisResult apply(final List<SleepSession> sleepSessions) {
-        final long countOwls = sleepSessions
-                .stream()
-                .filter(session -> session.getBeginSleepSession().toLocalTime()
-                        .isBefore(LocalTime.of(22, 0)) &&
-                        session.getEndSleep().toLocalTime().isAfter(LocalTime.of(7, 0)))
+        List<SleepSession> nightSessions = sleepSessions
+                .stream().
+                filter(this::isNightSession)
+                .toList();
+
+        final long countOwls = nightSessions.stream()
+                .filter(session -> session.getBeginSleepSession().toLocalTime().isAfter(LocalTime.of(23, 0)) &&
+                        session.getEndSleep().toLocalTime().isAfter(LocalTime.of(9, 0)))
                 .count();
 
-        final long countLark = sleepSessions
-                .stream()
-                .filter(session -> session.getEndSleep().toLocalTime().isAfter(LocalTime.of(9, 0)) &&
-                        (session.getBeginSleepSession().toLocalTime().isBefore(LocalTime.of(23, 0)) ||
-                                session.getBeginSleepSession().toLocalTime().isBefore(LocalTime.of(0, 0))))
+        final long countLark = nightSessions.stream()
+                .filter(session -> session.getBeginSleepSession().toLocalTime().isBefore(LocalTime.of(22, 0)) &&
+                        session.getEndSleep().toLocalTime().isBefore(LocalTime.of(7, 0)))
                 .count();
 
-        final long countPigeon = sleepSessions.size() - countOwls - countLark;
+        final long countPigeon = nightSessions.size() - countOwls - countLark;
 
         final TypeUser typeUser;
 
@@ -40,4 +41,12 @@ public class DetermineTypeUser implements Function<List<SleepSession>, SleepAnal
         return new SleepAnalysisResult("По типу сна вы", typeUser);
     }
 
+    private boolean isNightSession(SleepSession session) {
+        LocalDate beginDate = session.getBeginSleepSession().toLocalDate();
+        LocalDate endDate = session.getEndSleep().toLocalDate();
+        LocalTime beginTime = session.getBeginSleepSession().toLocalTime();
+
+        return !beginDate.equals(endDate)
+                || (!beginTime.isBefore(LocalTime.MIDNIGHT) && beginTime.isBefore(LocalTime.of(6, 0)));
+    }
 }
