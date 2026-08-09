@@ -1,7 +1,7 @@
 package analyticFunction;
 
-import analyticFunctions.BadQualitySessionsCounter;
-import analyticFunctions.SleepAnalysisResult;
+import analyticfunctions.BadQualitySessionsCounter;
+import analyticfunctions.SleepAnalysisResult;
 import enums.SleepAssessment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

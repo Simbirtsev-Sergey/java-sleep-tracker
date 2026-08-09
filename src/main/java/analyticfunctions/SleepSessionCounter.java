@@ -1,4 +1,4 @@
-package analyticFunctions;
+package analyticfunctions;
 
 import ru.yandex.practicum.sleeptracker.SleepSession;
 
@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 public class SleepSessionCounter implements Function<List<SleepSession>, SleepAnalysisResult> {
     @Override
-    public SleepAnalysisResult apply(List<SleepSession> sleepingSessions) {
+    public SleepAnalysisResult apply(final List<SleepSession> sleepingSessions) {
         return new SleepAnalysisResult("Количество сессий сна", sleepingSessions.size());
     }
 }

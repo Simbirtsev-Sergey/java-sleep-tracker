@@ -1,7 +1,7 @@
 package analyticFunction;
 
-import analyticFunctions.SleepAnalysisResult;
-import analyticFunctions.SleepSessionCounter;
+import analyticfunctions.SleepAnalysisResult;
+import analyticfunctions.SleepSessionCounter;
 import enums.SleepAssessment;
 import org.junit.jupiter.api.BeforeEach;
 import ru.yandex.practicum.sleeptracker.SleepSession;

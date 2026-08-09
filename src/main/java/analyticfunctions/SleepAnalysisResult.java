@@ -1,4 +1,4 @@
-package analyticFunctions;
+package analyticfunctions;
 
 import java.util.Objects;
 
@@ -23,7 +23,7 @@ public class SleepAnalysisResult {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) return true;
         if (obj == null || this.getClass() != obj.getClass()) return false;
         SleepAnalysisResult other = (SleepAnalysisResult) obj;

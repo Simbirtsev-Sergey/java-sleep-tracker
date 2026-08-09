@@ -3,7 +3,7 @@ package ru.yandex.practicum.sleeptracker;
 import java.util.List;
 import java.util.function.Function;
 
-import analyticFunctions.*;
+import analyticfunctions.*;
 
 
 public class SleepTrackerApp {

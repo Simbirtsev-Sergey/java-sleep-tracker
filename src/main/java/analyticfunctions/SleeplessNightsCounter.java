@@ -1,4 +1,4 @@
-package analyticFunctions;
+package analyticfunctions;
 
 import ru.yandex.practicum.sleeptracker.SleepSession;
 
@@ -14,9 +14,9 @@ public class SleeplessNightsCounter implements Function<List<SleepSession>, Slee
         if (sleepingSessions.isEmpty()) {
             return new SleepAnalysisResult("Количество бессонных ночей", 0);
         }
-        long countNights = countNight(sleepingSessions);
+        final long countNights = countNight(sleepingSessions);
 
-        long countSleeplessNights = sleepingSessions
+        final long countSleeplessNights = sleepingSessions
                 .stream()
                 .filter(session -> !session.getBeginSleepSession().toLocalDate()
                         .equals(session.getEndSleep().toLocalDate()) ||
@@ -29,17 +29,17 @@ public class SleeplessNightsCounter implements Function<List<SleepSession>, Slee
 
 
     private long countNight(final List<SleepSession> sleepingSessions) {
-        LocalDateTime start = sleepingSessions.getFirst().getBeginSleepSession();
-        LocalDateTime end = sleepingSessions.getLast().getEndSleep();
+        final LocalDateTime start = sleepingSessions.getFirst().getBeginSleepSession();
+        final LocalDateTime end = sleepingSessions.getLast().getEndSleep();
 
-        LocalDate first = start.toLocalTime().equals(LocalTime.MIDNIGHT) ?
+        final LocalDate first = start.toLocalTime().equals(LocalTime.MIDNIGHT) ?
                 start.toLocalDate() : start.toLocalDate().plusDays(1);
 
-        LocalDate last = !end.toLocalTime().isBefore(LocalTime.of(6, 0))
+        final LocalDate last = !end.toLocalTime().isBefore(LocalTime.of(6, 0))
                 ? end.toLocalDate()
                 : end.toLocalDate().minusDays(1);
 
-        long countNights = ChronoUnit.DAYS.between(first, last) + 1;
+        final long countNights = ChronoUnit.DAYS.between(first, last) + 1;
 
         return start.toLocalTime().isBefore(LocalTime.of(12, 0)) ? countNights + 1 : countNights;
     }

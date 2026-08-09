@@ -15,7 +15,7 @@ public class SleepingSessionsLoader {
     private final String fileName;
     private final SleepSessions sleepSessions;
 
-    public SleepingSessionsLoader(String fileName, SleepSessions sleepSessions) {
+    public SleepingSessionsLoader(final String fileName, final SleepSessions sleepSessions) {
         this.fileName = fileName;
         this.sleepSessions = sleepSessions;
     }

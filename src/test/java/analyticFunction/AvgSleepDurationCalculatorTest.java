@@ -1,7 +1,7 @@
 package analyticFunction;
 
-import analyticFunctions.AvgSleepDurationCalculator;
-import analyticFunctions.SleepAnalysisResult;
+import analyticfunctions.AvgSleepDurationCalculator;
+import analyticfunctions.SleepAnalysisResult;
 import enums.SleepAssessment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

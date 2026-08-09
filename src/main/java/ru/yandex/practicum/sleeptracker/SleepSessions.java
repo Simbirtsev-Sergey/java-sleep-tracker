@@ -10,7 +10,7 @@ public class SleepSessions {
         sleepSessions = new ArrayList<>();
     }
 
-    public void addSleepSession(SleepSession sleepSession) {
+    public void addSleepSession(final SleepSession sleepSession) {
         sleepSessions.add(sleepSession);
     }
 

@@ -1,4 +1,4 @@
-package analyticFunctions;
+package analyticfunctions;
 
 import enums.TypeUser;
 import ru.yandex.practicum.sleeptracker.SleepSession;
@@ -41,10 +41,10 @@ public class DetermineTypeUser implements Function<List<SleepSession>, SleepAnal
         return new SleepAnalysisResult("По типу сна вы", typeUser);
     }
 
-    private boolean isNightSession(SleepSession session) {
-        LocalDate beginDate = session.getBeginSleepSession().toLocalDate();
-        LocalDate endDate = session.getEndSleep().toLocalDate();
-        LocalTime beginTime = session.getBeginSleepSession().toLocalTime();
+    private boolean isNightSession(final SleepSession session) {
+        final LocalDate beginDate = session.getBeginSleepSession().toLocalDate();
+        final LocalDate endDate = session.getEndSleep().toLocalDate();
+        final LocalTime beginTime = session.getBeginSleepSession().toLocalTime();
 
         return !beginDate.equals(endDate)
                 || (!beginTime.isBefore(LocalTime.MIDNIGHT) && beginTime.isBefore(LocalTime.of(6, 0)));

@@ -1,4 +1,4 @@
-package analyticFunctions;
+package analyticfunctions;
 
 import enums.SleepAssessment;
 import ru.yandex.practicum.sleeptracker.SleepSession;
@@ -8,8 +8,8 @@ import java.util.function.Function;
 
 public class BadQualitySessionsCounter implements Function<List<SleepSession>, SleepAnalysisResult> {
     @Override
-    public SleepAnalysisResult apply(List<SleepSession> sleepingSessions) {
-        long cnt = sleepingSessions
+    public SleepAnalysisResult apply(final List<SleepSession> sleepingSessions) {
+        final long cnt = sleepingSessions
                 .stream()
                 .filter(session -> session.getSleepAssessment() == SleepAssessment.BAD)
                 .count();

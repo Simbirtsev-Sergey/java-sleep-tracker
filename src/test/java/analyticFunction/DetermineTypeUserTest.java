@@ -1,7 +1,7 @@
 package analyticFunction;
 
-import analyticFunctions.DetermineTypeUser;
-import analyticFunctions.SleepAnalysisResult;
+import analyticfunctions.DetermineTypeUser;
+import analyticfunctions.SleepAnalysisResult;
 import enums.SleepAssessment;
 import enums.TypeUser;
 import org.junit.jupiter.api.BeforeEach;

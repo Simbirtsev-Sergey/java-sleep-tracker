@@ -1,7 +1,7 @@
 package analyticFunction;
 
-import analyticFunctions.SleepAnalysisResult;
-import analyticFunctions.SleeplessNightsCounter;
+import analyticfunctions.SleepAnalysisResult;
+import analyticfunctions.SleeplessNightsCounter;
 import enums.SleepAssessment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

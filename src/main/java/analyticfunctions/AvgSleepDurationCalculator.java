@@ -1,4 +1,4 @@
-package analyticFunctions;
+package analyticfunctions;
 
 import ru.yandex.practicum.sleeptracker.SleepSession;
 
