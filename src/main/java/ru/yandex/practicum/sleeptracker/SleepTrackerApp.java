@@ -26,6 +26,7 @@ public class SleepTrackerApp {
             return;
         }
 
+        // Записыаем путь log-файла
         final String fileName = args[0];
 
         // Создаём объект загрузки
