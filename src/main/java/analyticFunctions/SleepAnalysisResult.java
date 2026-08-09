@@ -1,5 +1,7 @@
 package analyticFunctions;
 
+import java.util.Objects;
+
 public class SleepAnalysisResult {
     private final String description;
     private final Integer value;
@@ -13,5 +15,18 @@ public class SleepAnalysisResult {
     @Override
     public String toString() {
         return description + ": " + value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(description, value);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || this.getClass() != obj.getClass()) return false;
+        SleepAnalysisResult other = (SleepAnalysisResult) obj;
+        return this.description.equals(other.description) && this.value.equals(other.value);
     }
 }

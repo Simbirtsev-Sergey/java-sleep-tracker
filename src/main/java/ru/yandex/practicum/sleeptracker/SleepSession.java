@@ -12,10 +12,19 @@ public class SleepSession {
     // Оценка сна
     private final SleepAssassment sleepAssassment;
 
-    public SleepSession(LocalDateTime beginSleepSession, LocalDateTime endSleep, SleepAssassment sleepAssassment) {
+    public SleepSession(final LocalDateTime beginSleepSession, final LocalDateTime endSleep,
+                        final SleepAssassment sleepAssassment) {
         this.beginSleepSession = beginSleepSession;
         this.endSleep = endSleep;
         this.sleepAssassment = sleepAssassment;
         durationSleep = Duration.between(beginSleepSession, endSleep);
+    }
+
+    public long getDurationSleepInMinutes() {
+        return durationSleep.toMinutes();
+    }
+
+    public SleepAssassment getSleepAssassment() {
+        return sleepAssassment;
     }
 }

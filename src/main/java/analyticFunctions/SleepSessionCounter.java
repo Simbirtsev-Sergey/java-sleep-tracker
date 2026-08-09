@@ -1,6 +1,5 @@
 package analyticFunctions;
 
-
 import ru.yandex.practicum.sleeptracker.SleepSession;
 
 import java.util.List;

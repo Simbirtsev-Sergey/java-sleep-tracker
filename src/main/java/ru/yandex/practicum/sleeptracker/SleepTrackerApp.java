@@ -3,14 +3,17 @@ package ru.yandex.practicum.sleeptracker;
 import java.util.List;
 import java.util.function.Function;
 
-import analyticFunctions.SleepAnalysisResult;
-import analyticFunctions.SleepSessionCounter;
+import analyticFunctions.*;
 
 
 public class SleepTrackerApp {
     private static final SleepSessions sleepSessions = new SleepSessions();
     private static final List<Function<List<SleepSession>, SleepAnalysisResult>> analyticFunctions = List.of(
-            new SleepSessionCounter()
+            new SleepSessionCounter(),
+            new MaxSleepDurationCalculator(),
+            new MinSleepDurationCalculator(),
+            new BadQualitySessionsCounter(),
+            new AvgSleepDurationCalculator()
     );
 
 
