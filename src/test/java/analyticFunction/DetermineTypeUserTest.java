@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import static java.time.Month.OCTOBER;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 public class DetermineTypeUserTest {
     private static DetermineTypeUser DetermineTypeUser;
     private static SleepSessions sleepSessions;
