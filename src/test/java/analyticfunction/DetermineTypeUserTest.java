@@ -1,4 +1,4 @@
-package analyticFunction;
+package analyticfunction;
 
 import analyticfunctions.DetermineTypeUser;
 import analyticfunctions.SleepAnalysisResult;
