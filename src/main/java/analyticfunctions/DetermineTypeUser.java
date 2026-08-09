@@ -12,8 +12,8 @@ public class DetermineTypeUser implements Function<List<SleepSession>, SleepAnal
     @Override
     public SleepAnalysisResult apply(final List<SleepSession> sleepSessions) {
         List<SleepSession> nightSessions = sleepSessions
-                .stream().
-                filter(this::isNightSession)
+                .stream()
+                .filter(this::isNightSession)
                 .toList();
 
         final long countOwls = nightSessions.stream()
