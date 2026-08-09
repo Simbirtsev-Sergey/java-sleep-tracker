@@ -1,6 +1,6 @@
 package ru.yandex.practicum.sleeptracker;
 
-import enums.SleepAssassment;
+import enums.SleepAssessment;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -26,7 +26,7 @@ public class SleepingSessionsLoader {
                 final String[] sleepData = line.split(";");
                 final LocalDateTime beginSleepSession = LocalDateTime.parse(sleepData[0], FORMATTER);
                 final LocalDateTime endSleep = LocalDateTime.parse(sleepData[1], FORMATTER);
-                final SleepAssassment assessment = SleepAssassment.valueOf(sleepData[2]);
+                final SleepAssessment assessment = SleepAssessment.valueOf(sleepData[2]);
 
                 sleepSessions.addSleepSession(new SleepSession(beginSleepSession, endSleep, assessment));
             });

@@ -1,36 +1,49 @@
 package analyticFunction;
 
+import analyticFunctions.DetermineTypeUser;
 import analyticFunctions.SleepAnalysisResult;
-import analyticFunctions.SleepSessionCounter;
 import enums.SleepAssessment;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import ru.yandex.practicum.sleeptracker.SleepSession;
 import ru.yandex.practicum.sleeptracker.SleepSessions;
-import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static java.time.Month.OCTOBER;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SleepSessionCounterTest {
-    private static SleepSessionCounter sleepSessionCounter;
+public class DetermineTypeUserTest {
+    private static DetermineTypeUser DetermineTypeUser;
     private static SleepSessions sleepSessions;
 
     @BeforeEach
     public void beforeEach() {
         sleepSessions = new SleepSessions();
-        sleepSessionCounter = new SleepSessionCounter();
+        DetermineTypeUser = new DetermineTypeUser();
     }
 
     @Test
-    public void emptySleepSessionIsCreated() {
-        assertEquals(new SleepAnalysisResult("Количество сессий сна", 0),
-                sleepSessionCounter.apply(sleepSessions.getSleepSessions()));
+    public void shouldPrintOWL() {
+        assertEquals(new SleepAnalysisResult("По типу сна вы", 0),
+                DetermineTypeUser.apply(sleepSessions.getSleepSessions()));
     }
 
     @Test
-    public void nonEmptySleepSessionIsCreated() {
+    public void shouldPrintLARK() {
+        assertEquals(new SleepAnalysisResult("По типу сна вы", 0),
+                DetermineTypeUser.apply(sleepSessions.getSleepSessions()));
+    }
+
+
+    @Test
+    public void shouldPrintPIGEON() {
+        assertEquals(new SleepAnalysisResult("По типу сна вы", 0),
+                DetermineTypeUser.apply(sleepSessions.getSleepSessions()));
+    }
+
+    @Test
+    public void shouldReturnDuration495Minutes() {
         SleepSession session1 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 1, 23, 15),
                 LocalDateTime.of(2025, OCTOBER, 2, 7, 30), SleepAssessment.GOOD);
         SleepSession session2 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 2, 23, 50),
@@ -42,7 +55,7 @@ public class SleepSessionCounterTest {
         sleepSessions.addSleepSession(session2);
         sleepSessions.addSleepSession(session3);
 
-        assertEquals(new SleepAnalysisResult("Количество сессий сна", 3),
-                sleepSessionCounter.apply(sleepSessions.getSleepSessions()));
+        assertEquals(new SleepAnalysisResult("Максимальная продолжительность", 495),
+                DetermineTypeUser.apply(sleepSessions.getSleepSessions()));
     }
 }

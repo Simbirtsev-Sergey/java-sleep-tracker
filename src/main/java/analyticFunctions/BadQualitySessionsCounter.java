@@ -1,6 +1,6 @@
 package analyticFunctions;
 
-import enums.SleepAssassment;
+import enums.SleepAssessment;
 import ru.yandex.practicum.sleeptracker.SleepSession;
 
 import java.util.List;
@@ -11,7 +11,7 @@ public class BadQualitySessionsCounter implements Function<List<SleepSession>, S
     public SleepAnalysisResult apply(List<SleepSession> sleepingSessions) {
         long cnt = sleepingSessions
                 .stream()
-                .filter(session -> session.getSleepAssassment() == SleepAssassment.BAD)
+                .filter(session -> session.getSleepAssessment() == SleepAssessment.BAD)
                 .count();
 
         return new SleepAnalysisResult("Количество сессий с плохим качеством сна", (int) cnt);

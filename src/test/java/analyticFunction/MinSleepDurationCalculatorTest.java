@@ -2,7 +2,7 @@ package analyticFunction;
 
 import analyticFunctions.MinSleepDurationCalculator;
 import analyticFunctions.SleepAnalysisResult;
-import enums.SleepAssassment;
+import enums.SleepAssessment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.yandex.practicum.sleeptracker.SleepSession;
@@ -32,11 +32,11 @@ public class MinSleepDurationCalculatorTest {
     @Test
     public void shouldReturnDuration80Minutes() {
         SleepSession session1 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 1, 23, 15),
-                LocalDateTime.of(2025, OCTOBER, 2, 7, 30), SleepAssassment.GOOD);
+                LocalDateTime.of(2025, OCTOBER, 2, 7, 30), SleepAssessment.GOOD);
         SleepSession session2 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 2, 23, 50),
-                LocalDateTime.of(2025, OCTOBER, 3, 6, 40), SleepAssassment.NORMAL);
+                LocalDateTime.of(2025, OCTOBER, 3, 6, 40), SleepAssessment.NORMAL);
         SleepSession session3 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 3, 14, 10),
-                LocalDateTime.of(2025, OCTOBER, 3, 15, 30), SleepAssassment.GOOD);
+                LocalDateTime.of(2025, OCTOBER, 3, 15, 30), SleepAssessment.GOOD);
 
         sleepSessions.addSleepSession(session1);
         sleepSessions.addSleepSession(session2);

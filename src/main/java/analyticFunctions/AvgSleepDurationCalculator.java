@@ -8,12 +8,12 @@ import java.util.function.Function;
 public class AvgSleepDurationCalculator implements Function<List<SleepSession>, SleepAnalysisResult> {
     @Override
     public SleepAnalysisResult apply(List<SleepSession> sleepingSessions) {
-        double min = sleepingSessions.stream()
+        double avg = sleepingSessions.stream()
                 .mapToLong(SleepSession::getDurationSleepInMinutes)
                 .average()
                 .orElse(0);
 
 
-        return new SleepAnalysisResult("Средняя продолжительность сна", (int) min);
+        return new SleepAnalysisResult("Средняя продолжительность сна", (int) avg);
     }
 }

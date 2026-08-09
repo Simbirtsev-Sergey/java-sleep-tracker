@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class SleepAnalysisResult {
     private final String description;
-    private final Integer value;
+    private final Object value;
 
 
-    public SleepAnalysisResult(final String description, final Integer value) {
+    public SleepAnalysisResult(final String description, final Object value) {
         this.description = description;
         this.value = value;
     }

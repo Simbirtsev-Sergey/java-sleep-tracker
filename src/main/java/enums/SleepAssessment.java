@@ -1,6 +1,6 @@
 package enums;
 
-public enum SleepAssassment {
+public enum SleepAssessment {
     BAD,
     NORMAL,
     GOOD

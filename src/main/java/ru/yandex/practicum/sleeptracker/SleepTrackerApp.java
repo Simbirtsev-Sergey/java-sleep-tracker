@@ -14,12 +14,12 @@ public class SleepTrackerApp {
             new MinSleepDurationCalculator(),
             new BadQualitySessionsCounter(),
             new AvgSleepDurationCalculator(),
-            new SleeplessNightsCounter()
+            new SleeplessNightsCounter(),
+            new DetermineTypeUser()
     );
 
 
     public static void main(String[] args) {
-
 
         if (args.length == 0) {
             System.out.println("Файл не был передан");
@@ -29,7 +29,7 @@ public class SleepTrackerApp {
         final String fileName = args[0];
 
         // Создаём объект загрузки
-        SleepingSessionsLoader loader = new SleepingSessionsLoader(fileName, sleepSessions);
+        final SleepingSessionsLoader loader = new SleepingSessionsLoader(fileName, sleepSessions);
 
         // Загружаем log- файл в sleepSessions
         loader.loaderSessions();
