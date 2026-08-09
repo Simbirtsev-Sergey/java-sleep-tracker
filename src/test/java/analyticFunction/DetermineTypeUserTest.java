@@ -3,6 +3,7 @@ package analyticFunction;
 import analyticFunctions.DetermineTypeUser;
 import analyticFunctions.SleepAnalysisResult;
 import enums.SleepAssessment;
+import enums.TypeUser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.yandex.practicum.sleeptracker.SleepSession;
@@ -25,37 +26,55 @@ public class DetermineTypeUserTest {
 
     @Test
     public void shouldPrintOWL() {
-        assertEquals(new SleepAnalysisResult("По типу сна вы", 0),
+        SleepSession session1 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 1, 23, 15),
+                LocalDateTime.of(2025, OCTOBER, 2, 10, 30), SleepAssessment.GOOD);
+        SleepSession session2 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 2, 23, 50),
+                LocalDateTime.of(2025, OCTOBER, 3, 10, 40), SleepAssessment.NORMAL);
+        SleepSession session3 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 3, 21, 10),
+                LocalDateTime.of(2025, OCTOBER, 4, 6, 30), SleepAssessment.GOOD);
+
+        sleepSessions.addSleepSession(session1);
+        sleepSessions.addSleepSession(session2);
+        sleepSessions.addSleepSession(session3);
+
+        assertEquals(new SleepAnalysisResult("По типу сна вы", TypeUser.OWL),
                 DetermineTypeUser.apply(sleepSessions.getSleepSessions()));
     }
 
     @Test
     public void shouldPrintLARK() {
-        assertEquals(new SleepAnalysisResult("По типу сна вы", 0),
+        SleepSession session1 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 2, 23, 50),
+                LocalDateTime.of(2025, OCTOBER, 3, 10, 40), SleepAssessment.NORMAL);
+        SleepSession session2 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 3, 21, 10),
+                LocalDateTime.of(2025, OCTOBER, 4, 6, 30), SleepAssessment.GOOD);
+        SleepSession session3 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 4, 20, 45),
+                LocalDateTime.of(2025, OCTOBER, 5, 2, 30), SleepAssessment.GOOD);
+
+        sleepSessions.addSleepSession(session1);
+        sleepSessions.addSleepSession(session2);
+        sleepSessions.addSleepSession(session3);
+
+        assertEquals(new SleepAnalysisResult("По типу сна вы", TypeUser.LARK),
                 DetermineTypeUser.apply(sleepSessions.getSleepSessions()));
     }
 
 
     @Test
     public void shouldPrintPIGEON() {
-        assertEquals(new SleepAnalysisResult("По типу сна вы", 0),
-                DetermineTypeUser.apply(sleepSessions.getSleepSessions()));
-    }
-
-    @Test
-    public void shouldReturnDuration495Minutes() {
         SleepSession session1 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 1, 23, 15),
-                LocalDateTime.of(2025, OCTOBER, 2, 7, 30), SleepAssessment.GOOD);
+                LocalDateTime.of(2025, OCTOBER, 2, 10, 30), SleepAssessment.GOOD);
         SleepSession session2 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 2, 23, 50),
-                LocalDateTime.of(2025, OCTOBER, 3, 6, 40), SleepAssessment.NORMAL);
-        SleepSession session3 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 3, 14, 10),
-                LocalDateTime.of(2025, OCTOBER, 3, 15, 30), SleepAssessment.GOOD);
+                LocalDateTime.of(2025, OCTOBER, 3, 10, 40), SleepAssessment.NORMAL);
+        SleepSession session3 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 3, 21, 10),
+                LocalDateTime.of(2025, OCTOBER, 4, 6, 30), SleepAssessment.GOOD);
+        SleepSession session4 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 4, 20, 45),
+                LocalDateTime.of(2025, OCTOBER, 5, 2, 30), SleepAssessment.GOOD);
 
         sleepSessions.addSleepSession(session1);
         sleepSessions.addSleepSession(session2);
         sleepSessions.addSleepSession(session3);
-
-        assertEquals(new SleepAnalysisResult("Максимальная продолжительность", 495),
+        sleepSessions.addSleepSession(session4);
+        assertEquals(new SleepAnalysisResult("По типу сна вы", TypeUser.PIGEON),
                 DetermineTypeUser.apply(sleepSessions.getSleepSessions()));
     }
 }
