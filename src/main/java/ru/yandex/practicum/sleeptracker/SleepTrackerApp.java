@@ -13,7 +13,8 @@ public class SleepTrackerApp {
             new MaxSleepDurationCalculator(),
             new MinSleepDurationCalculator(),
             new BadQualitySessionsCounter(),
-            new AvgSleepDurationCalculator()
+            new AvgSleepDurationCalculator(),
+            new SleeplessNightsCounter()
     );
 
 

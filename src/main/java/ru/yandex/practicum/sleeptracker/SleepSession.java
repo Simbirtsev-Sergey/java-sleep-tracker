@@ -27,4 +27,12 @@ public class SleepSession {
     public SleepAssassment getSleepAssassment() {
         return sleepAssassment;
     }
+
+    public LocalDateTime getBeginSleepSession() {
+        return beginSleepSession;
+    }
+
+    public LocalDateTime getEndSleep() {
+        return endSleep;
+    }
 }
