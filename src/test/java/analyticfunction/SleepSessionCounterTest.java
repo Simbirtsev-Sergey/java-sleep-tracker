@@ -24,13 +24,13 @@ public class SleepSessionCounterTest {
     }
 
     @Test
-    public void emptySleepSessionIsCreated() {
+    public void emptySleepSession() {
         assertEquals(new SleepAnalysisResult("Количество сессий сна", 0),
                 sleepSessionCounter.apply(sleepSessions.getSleepSessions()));
     }
 
     @Test
-    public void nonEmptySleepSessionIsCreated() {
+    public void nonEmptySleepSession() {
         SleepSession session1 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 1, 23, 15),
                 LocalDateTime.of(2025, OCTOBER, 2, 7, 30), SleepAssessment.GOOD);
         SleepSession session2 = new SleepSession(LocalDateTime.of(2025, OCTOBER, 2, 23, 50),
